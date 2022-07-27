@@ -19,7 +19,7 @@ liff
       app.innerHTML += `<p>GET params: ${key}: ${value}</p>`;
     }
     fetch(
-      "https://script.google.com/macros/s/AKfycbxgJ2Si33O8FeckeivMkMJ4MDuv4g-_U41E4rC5EkbH3ubiYvjydDVDXu2ga9MqXxW5IA/exec",
+      "https://script.google.com/macros/s/AKfycbwr9TdqeMzce8HS3B4EEa2Fx6cJ6K-LaBUjBmY6gNzidcdLhyvf5-MSGlMy_9D7VswyMA/exec",
       {
         method: "POST",
         headers: {
