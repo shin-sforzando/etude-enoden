@@ -49,13 +49,10 @@ liff
       body: body,
     })
       .then((res) => {
-        for (const r in res) {
-          app.innerHTML += `<p>POST Result: ${r}</p>`;
-        }
-        return res.text();
+        res.text();
       })
       .then((text) => {
-        app.innerHTML += `<p>POST JSON: ${JSON.stringify(text)}</p>`;
+        app.innerHTML += `<p>POST JSON: ${text}</p>`;
       })
       .catch((err) => {
         app.innerHTML += `<p>POST Error: ${err}</p>`;
