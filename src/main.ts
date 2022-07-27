@@ -10,29 +10,28 @@ liff
   })
   .then(() => {
     app.innerHTML = `
-    <h1>create-liff-app</h1>
-    <p>LIFF init succeeded.</p>
+    <h1>LIFF init succeeded.</h1>
   `;
+    app.innerHTML += `<p>LINE ID: ${liff.getIDToken()}</p>`;
     for (const [key, value] of url.searchParams.entries()) {
-      app.innerHTML += `<p>${key}: ${value}</p>`;
+      app.innerHTML += `<p>GET: ${key}: ${value}</p>`;
     }
-    liff
-      .scanCodeV2()
-      .then((result) => {
-        app.innerHTML += `
-      <p>Scan result: ${result.value}</p>
-    `;
-      })
-      .catch((err) => {
-        app.innerHTML += `
-      <p>Scan failed: ${err}</p>
-    `;
-      });
+    // liff
+    //   .scanCodeV2()
+    //   .then((result) => {
+    //     app.innerHTML += `
+    //   <p>Scan result: ${result.value}</p>
+    // `;
+    //   })
+    //   .catch((err) => {
+    //     app.innerHTML += `
+    //   <p>Scan failed: ${err}</p>
+    // `;
+    //   });
   })
   .catch((error: Error) => {
     app.innerHTML = `
-    <h1>create-liff-app</h1>
-    <p>LIFF init failed.</p>
+    <h1>LIFF init failed.</h1>
     <p><code>${error}</code></p>
   `;
   });
