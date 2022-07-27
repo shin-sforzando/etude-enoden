@@ -13,8 +13,9 @@ liff
     <h1>LIFF init succeeded.</h1>
   `;
     app.innerHTML += `<p>LINE ID: ${liff.getIDToken()}</p>`;
-    app.innerHTML += `<p>LINE Profile: ${liff.getProfile()}</p>`;
-    for (const [key, value] of url.searchParams.entries()) {
+    app.innerHTML += `<p>LINE Profile: ${JSON.stringify(liff.getProfile())}</p>`;
+    const entries = url.searchParams.entries();
+    for (const [key, value] of entries) {
       app.innerHTML += `<p>GET params: ${key}: ${value}</p>`;
     }
     fetch(
@@ -27,7 +28,7 @@ liff
         body: JSON.stringify({
           lineId: liff.getIDToken(),
           lineProfile: liff.getProfile(),
-          getParams: url.searchParams,
+          getParams: entries,
         }),
       }
     )
