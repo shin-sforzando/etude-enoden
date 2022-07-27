@@ -50,8 +50,12 @@ liff
     })
       .then((res) => {
         for (const r in res) {
-          app.innerHTML += `<p>POST Success: ${r}</p>`;
+          app.innerHTML += `<p>POST Result: ${r}</p>`;
         }
+        return res.json();
+      })
+      .then((json) => {
+        app.innerHTML += `<p>POST JSON: ${JSON.stringify(json)}</p>`;
       })
       .catch((err) => {
         app.innerHTML += `<p>POST Error: ${err}</p>`;
