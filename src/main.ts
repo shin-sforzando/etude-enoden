@@ -12,6 +12,18 @@ liff
     <h1>create-liff-app</h1>
     <p>LIFF init succeeded.</p>
   `;
+    liff
+      .scanCodeV2()
+      .then((result) => {
+        app.innerHTML += `
+      <p>Scan result: ${result.value}</p>
+    `;
+      })
+      .catch((err) => {
+        app.innerHTML += `
+      <p>Scan failed: ${err}</p>
+    `;
+      });
   })
   .catch((error: Error) => {
     app.innerHTML = `
