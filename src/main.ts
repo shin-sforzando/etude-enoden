@@ -49,10 +49,7 @@ liff
       body: body,
     })
       .then((response) => {
-        response.json();
-      })
-      .then((data) => {
-        app.innerHTML += `<p>POST Success: ${data}</p>`;
+        app.innerHTML += `<p>POST Success: ${response.body}</p>`;
       })
       .catch((err) => {
         app.innerHTML += `<p>POST Error: ${err}</p>`;
