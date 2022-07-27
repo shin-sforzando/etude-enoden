@@ -20,12 +20,16 @@ liff
       liff.getProfile()
     )}</p>`;
     const entries = url.searchParams.entries();
+    let location = "";
     for (const [key, value] of entries) {
       app.innerHTML += `<p>GET params: ${key}: ${value}</p>`;
+      if (key === "location") {
+        location = value;
+      }
     }
     const body = JSON.stringify({
       lineId: line_id_token,
-      location: "A",
+      location: location,
     });
     app.innerHTML += `<p>Body: ${body}</p>`;
     fetch(gas, {
