@@ -13,9 +13,30 @@ liff
     <h1>LIFF init succeeded.</h1>
   `;
     app.innerHTML += `<p>LINE ID: ${liff.getIDToken()}</p>`;
+    app.innerHTML += `<p>LINE Profile: ${liff.getProfile()}</p>`;
     for (const [key, value] of url.searchParams.entries()) {
-      app.innerHTML += `<p>GET: ${key}: ${value}</p>`;
+      app.innerHTML += `<p>GET params: ${key}: ${value}</p>`;
     }
+    fetch(
+      "https://script.google.com/macros/s/AKfycbxgJ2Si33O8FeckeivMkMJ4MDuv4g-_U41E4rC5EkbH3ubiYvjydDVDXu2ga9MqXxW5IA/exec",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          lineId: liff.getIDToken(),
+          lineProfile: liff.getProfile(),
+          getParams: url.searchParams,
+        }),
+      }
+    )
+      .then((res) => {
+        app.innerHTML += `<p>POST Success: ${res.status}</p>`;
+      })
+      .catch((err) => {
+        app.innerHTML += `<p>POST Error: ${err}</p>`;
+      });
     // liff
     //   .scanCodeV2()
     //   .then((result) => {
