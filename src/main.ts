@@ -32,7 +32,7 @@ liff
       }
     }
     const body = JSON.stringify({
-      lineId: line_decoded_id.sup,
+      lineId: line_decoded_id.sup ?? "Unknown",
       location: location,
     });
     app.innerHTML += `<p>Body: ${body}</p>`;
