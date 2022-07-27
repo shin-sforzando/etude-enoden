@@ -16,8 +16,10 @@ liff
   `;
     const line_id_token = liff.getIDToken();
     const line_decoded_id = liff.getDecodedIDToken();
-    app.innerHTML += `<p>LINE ID: ${line_id_token}</p>
-    <p>Decoded: ${line_decoded_id}</p>`;
+    app.innerHTML += `<p>LINE ID: ${line_id_token}</p>`;
+    for (const [key, value] in line_decoded_id) {
+      app.innerHTML += `<p>${key}: ${value}</p>`;
+    }
     app.innerHTML += `<p>LINE Profile: ${JSON.stringify(
       liff.getProfile()
     )}</p>`;
