@@ -35,12 +35,12 @@ liff
     fetch(gas, {
       method: "POST",
       headers: {
-        "Content-Type": "application/json",
+        "Content-Type": "application/x-www-form-urlencoded",
       },
       body: body,
     })
       .then((res) => {
-        app.innerHTML += `<p>POST Success: ${res.status}</p>`;
+        app.innerHTML += `<p>POST Success: ${res}</p>`;
       })
       .catch((err) => {
         app.innerHTML += `<p>POST Error: ${err}</p>`;
