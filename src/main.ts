@@ -49,7 +49,9 @@ liff
       body: body,
     })
       .then((res) => {
-        app.innerHTML += `<p>POST Success: ${res}</p>`;
+        for (const r in res) {
+          app.innerHTML += `<p>POST Success: ${r}</p>`;
+        }
       })
       .catch((err) => {
         app.innerHTML += `<p>POST Error: ${err}</p>`;
