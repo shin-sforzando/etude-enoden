@@ -12,7 +12,8 @@ liff
     app.innerHTML = `
     <h1>LIFF init succeeded.</h1>
   `;
-    app.innerHTML += `<p>LINE ID: ${liff.getIDToken()}</p>`;
+    const line_id_token = liff.getIDToken();
+    app.innerHTML += `<p>LINE ID: ${line_id_token}</p>`;
     app.innerHTML += `<p>LINE Profile: ${JSON.stringify(
       liff.getProfile()
     )}</p>`;
@@ -28,7 +29,7 @@ liff
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          lineId: liff.getIDToken(),
+          lineId: line_id_token,
           getParams: entries,
         }),
       }
