@@ -53,8 +53,8 @@ liff
         return res.json();
       })
       .then((json) => {
-        if (json.message) {
-          app.innerHTML += `<p>JSON: ${json.message}</p>`;
+        if (json) {
+          app.innerHTML += `<p>JSON: ${json}</p>`;
         }
       })
       .catch((err) => {
