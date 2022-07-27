@@ -17,6 +17,10 @@ liff
     const line_id_token = liff.getIDToken();
     app.innerHTML += `<p>LINE ID: ${line_id_token}</p>`;
     const line_decoded_id = liff.getDecodedIDToken();
+    let sub = "Unknown";
+    if (line_decoded_id) {
+      sub = line_decoded_id.sub ?? "Unknown";
+    }
     app.innerHTML += `<p>Decoded LINE ID: ${JSON.stringify(
       line_decoded_id
     )}</p>`;
@@ -32,7 +36,7 @@ liff
       }
     }
     const body = JSON.stringify({
-      lineId: line_decoded_id.sup ?? "Unknown",
+      lineId: sub,
       location: location,
     });
     app.innerHTML += `<p>Body: ${body}</p>`;
