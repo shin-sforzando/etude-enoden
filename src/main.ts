@@ -21,6 +21,11 @@ liff
     for (const [key, value] of entries) {
       app.innerHTML += `<p>GET params: ${key}: ${value}</p>`;
     }
+    const body = JSON.stringify({
+      lineId: line_id_token,
+      getParams: entries,
+    });
+    app.innerHTML += `<p>Body: ${body}</p>`;
     fetch(
       "https://script.google.com/macros/s/AKfycbwr9TdqeMzce8HS3B4EEa2Fx6cJ6K-LaBUjBmY6gNzidcdLhyvf5-MSGlMy_9D7VswyMA/exec",
       {
@@ -28,10 +33,7 @@ liff
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-          lineId: line_id_token,
-          getParams: entries,
-        }),
+        body: body,
       }
     )
       .then((res) => {
