@@ -2,7 +2,7 @@ import "./style.css";
 import liff from "@line/liff";
 
 const gas =
-  "https://script.google.com/macros/s/AKfycbw6JSwI55IdgHKFo8RIShKfz4VTyAY9cJakDW_XGzL6VryOlVMnCLg1opKGyVmu-QHlgQ/exec";
+  "https://script.google.com/macros/s/AKfycby_NxDFa8QL333ZjMd9ctFxZADT-BP9eMCLQSzCfv2Ghy_3VtcEzc3TXFY4SMGJMFgZLg/exec";
 const app = document.querySelector<HTMLDivElement>("#app") as HTMLDivElement;
 const url = new URL(window.location.href);
 
@@ -15,7 +15,9 @@ liff
     <h1>LIFF init succeeded.</h1>
   `;
     const line_id_token = liff.getIDToken();
-    app.innerHTML += `<p>LINE ID: ${line_id_token}</p>`;
+    const line_decoded_id = liff.getDecodedIDToken();
+    app.innerHTML += `<p>LINE ID: ${line_id_token}</p>
+    <p>Decoded: ${line_decoded_id}</p>`;
     app.innerHTML += `<p>LINE Profile: ${JSON.stringify(
       liff.getProfile()
     )}</p>`;
@@ -41,7 +43,13 @@ liff
       body: body,
     })
       .then((res) => {
-        app.innerHTML += `<p>POST Success: ${res}</p>`;
+        app.innerHTML += `<p>POST Success: ${res.status}</p>`;
+        return res.json();
+      })
+      .then((json) => {
+        if (json.message) {
+          app.innerHTML += `<p>${json.message}</p>`;
+        }
       })
       .catch((err) => {
         app.innerHTML += `<p>POST Error: ${err}</p>`;
