@@ -48,11 +48,11 @@ liff
       },
       body: body,
     })
-      .then((res) => {
-        return res.text();
+      .then((response) => {
+        response.json();
       })
-      .then((text) => {
-        app.innerHTML += `<p>POST Json: ${text}</p>`;
+      .then((data) => {
+        app.innerHTML += `<p>POST Success: ${data}</p>`;
       })
       .catch((err) => {
         app.innerHTML += `<p>POST Error: ${err}</p>`;
