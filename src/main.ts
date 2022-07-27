@@ -1,6 +1,8 @@
 import "./style.css";
 import liff from "@line/liff";
 
+const gas =
+  "https://script.google.com/macros/s/AKfycbw6JSwI55IdgHKFo8RIShKfz4VTyAY9cJakDW_XGzL6VryOlVMnCLg1opKGyVmu-QHlgQ/exec";
 const app = document.querySelector<HTMLDivElement>("#app") as HTMLDivElement;
 const url = new URL(window.location.href);
 
@@ -23,19 +25,16 @@ liff
     }
     const body = JSON.stringify({
       lineId: line_id_token,
-      getParams: entries,
+      location: "A",
     });
     app.innerHTML += `<p>Body: ${body}</p>`;
-    fetch(
-      "https://script.google.com/macros/s/AKfycbwr9TdqeMzce8HS3B4EEa2Fx6cJ6K-LaBUjBmY6gNzidcdLhyvf5-MSGlMy_9D7VswyMA/exec",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: body,
-      }
-    )
+    fetch(gas, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: body,
+    })
       .then((res) => {
         app.innerHTML += `<p>POST Success: ${res.status}</p>`;
       })
