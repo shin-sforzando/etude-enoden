@@ -50,11 +50,11 @@ liff
     })
       .then((res) => {
         app.innerHTML += `<p>POST Success: ${res.status}</p>`;
-        return res.json();
+        return res.text();
       })
-      .then((json) => {
-        if (json) {
-          app.innerHTML += `<p>JSON: ${json}</p>`;
+      .then((text) => {
+        if (text) {
+          app.innerHTML += `<p>Text: ${text}</p>`;
         }
       })
       .catch((err) => {
