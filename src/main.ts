@@ -49,26 +49,14 @@ liff
       body: body,
     })
       .then((res) => {
-        res.text();
+        return res.text();
       })
       .then((text) => {
-        app.innerHTML += `<p>POST JSON: ${text}</p>`;
+        app.innerHTML += `<p>POST Json: ${text}</p>`;
       })
       .catch((err) => {
         app.innerHTML += `<p>POST Error: ${err}</p>`;
       });
-    // liff
-    //   .scanCodeV2()
-    //   .then((result) => {
-    //     app.innerHTML += `
-    //   <p>Scan result: ${result.value}</p>
-    // `;
-    //   })
-    //   .catch((err) => {
-    //     app.innerHTML += `
-    //   <p>Scan failed: ${err}</p>
-    // `;
-    //   });
   })
   .catch((error: Error) => {
     app.innerHTML = `
