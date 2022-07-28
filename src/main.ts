@@ -2,7 +2,7 @@ import "./style.css";
 import liff from "@line/liff";
 
 const gas =
-  "https://script.google.com/macros/s/AKfycbw7f0c4YviJwV6-QpwNdFu5p-O0lLwJzKRVc5zB2ONFJc5rmhVKkPEJXDVf0HZ9cQvYag/exec";
+  "https://script.google.com/macros/s/AKfycbwC42x_h-y5_4tm9_pT4lubahzetH0f0w7_n1W8P1lD_LxGekCidb8kNke7BhkqL825/exec";
 const app = document.querySelector<HTMLDivElement>("#app") as HTMLDivElement;
 const url = new URL(window.location.href);
 
@@ -35,16 +35,18 @@ liff
         location = value;
       }
     }
-    const body = JSON.stringify({
-      lineId: sub,
-      location: location,
-    });
+    // const body = JSON.stringify({
+    //   lineId: sub,
+    //   location: location,
+    // });
+    const body = `lineId=${sub}&location=${location}`;
     app.innerHTML += `<p>Body: ${body}</p>`;
     fetch(gas, {
       method: "POST",
       mode: "no-cors",
       headers: {
-        "Content-Type": "application/json",
+        // "Content-Type": "application/json",
+        "Content-Type": "application/x-www-form-urlencoded",
       },
       body: body,
     })
