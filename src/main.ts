@@ -2,7 +2,7 @@ import "./style.css";
 import liff from "@line/liff";
 
 const GAS_URL =
-  "https://script.google.com/macros/s/AKfycbxWm1xifOGGNcTjPKJjDjnWvgwKYTCYjqjLnkrY0dwEyGpQRXbd2XdGOhGXnstivvnZGw/exec";
+  "https://script.google.com/macros/s/AKfycbxAuPViLUwO2WwzDUm9Ijq7i1xonej-Vm_hzHlZYyyEb9q-XqJukiu50QWDVfMxaxSV4g/exec";
 const app = document.querySelector<HTMLDivElement>("#app") as HTMLDivElement;
 const url = new URL(window.location.href);
 
