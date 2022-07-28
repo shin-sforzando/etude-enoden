@@ -2,7 +2,7 @@ import "./style.css";
 import liff from "@line/liff";
 
 const GAS_URL =
-  "https://script.google.com/macros/s/AKfycbxAuPViLUwO2WwzDUm9Ijq7i1xonej-Vm_hzHlZYyyEb9q-XqJukiu50QWDVfMxaxSV4g/exec";
+  "https://script.google.com/macros/s/AKfycbwDxGZZyL7ngAHVLfE0FTXw-ajScIR7ltZY_6LzjmR6lbLm1WAKVfwvoXDkJVmiB1Q11Q/exec";
 const app = document.querySelector<HTMLDivElement>("#app") as HTMLDivElement;
 const url = new URL(window.location.href);
 
@@ -35,18 +35,18 @@ liff
         location = value;
       }
     }
-    // const body = JSON.stringify({
-    //   lineId: sub,
-    //   location: location,
-    // });
-    const body = `lineId=${sub}&location=${location}`;
+    const body = JSON.stringify({
+      lineId: sub,
+      location: location,
+    });
+    // const body = `lineId=${sub}&location=${location}`;
     app.innerHTML += `<p>Body: ${body}</p>`;
     fetch(GAS_URL, {
-      method: "POST",
+      method: "GET",
       mode: "no-cors",
       headers: {
-        // "Content-Type": "application/json",
-        "Content-Type": "application/x-www-form-urlencoded",
+        "Content-Type": "application/json",
+        // "Content-Type": "application/x-www-form-urlencoded",
       },
       body: body,
     })
@@ -54,10 +54,10 @@ liff
         return response.text();
       })
       .then((text) => {
-        app.innerHTML += `<p>POST Success: ${text}</p>`;
+        app.innerHTML += `<p>GET Success: ${text}</p>`;
       })
       .catch((err) => {
-        app.innerHTML += `<p>POST Error: ${err}</p>`;
+        app.innerHTML += `<p>GET Error: ${err}</p>`;
       });
   })
   .catch((error: Error) => {
