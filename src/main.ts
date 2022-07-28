@@ -54,8 +54,8 @@ liff
       .then((response) => {
         return response.json();
       })
-      .then((json) => {
-        app.innerHTML += `<p>GET Success: ${json}</p>`;
+      .then((data) => {
+        app.innerHTML += `<p>GET Success: ${data}</p>`;
       })
       .catch((err) => {
         app.innerHTML += `<p>GET Error: ${err}</p>`;
