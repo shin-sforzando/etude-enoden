@@ -52,7 +52,7 @@ liff
       // body: body,
     })
       .then((response) => {
-        return response.json();
+        return response.text();
       })
       .then((data) => {
         app.innerHTML += `<p>GET Success: ${data}</p>`;
